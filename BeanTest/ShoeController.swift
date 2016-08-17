@@ -16,6 +16,12 @@ class ShoeController: UIViewController, PTDBeanManagerDelegate, PTDBeanDelegate 
     var yourBean = PTDBean?()
     
     var shoeImages: [UIImage] = []
+    var currentIndex: Int = 0
+    
+    var timerInitiated = false;
+    var timer: NSTimer?
+    
+    var imageIndex: Int = 0
     
     private var containerView: UIView = {
         let view = UIView()
@@ -24,7 +30,7 @@ class ShoeController: UIViewController, PTDBeanManagerDelegate, PTDBeanDelegate 
     }()
     
     private var iv: UIImageView = {
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 450, 330))
+        let imageView = UIImageView(frame: CGRectZero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -57,7 +63,7 @@ class ShoeController: UIViewController, PTDBeanManagerDelegate, PTDBeanDelegate 
     
 }
 
-//MARK: - DeltaPanGestureRecognizer -
+//MARK: - PanGestureRecognizer -
 extension ShoeController {
     
     func createPanGestureRecognizer(targetView: UIView) {
@@ -65,26 +71,70 @@ extension ShoeController {
         targetView.addGestureRecognizer(panGesture)
     }
     
+    func findIndex(newTranslation: CGPoint) {
+        let translationPercent = newTranslation.x/UIScreen.mainScreen().bounds.width
+        imageIndex = Int(translationPercent * CGFloat(ShoeController.ImageCount))
+    }
+    
+    func animateFrame() {
+        currentIndex += Int(round(Double(imageIndex-currentIndex)/10))
+        
+        if currentIndex < 0 {
+            currentIndex = 0
+        }
+        if currentIndex > 61 {
+            currentIndex = 61
+        }
+        
+        print (currentIndex)
+        let currentImage: UIImage = shoeImages[currentIndex]
+        iv.image = currentImage
+    }
+
+    
     func panGestureRecognized(sender: UIPanGestureRecognizer) {
         
+        /*
+         NSTimer happens when the gesture is first recgonized
+         The animation then starts when the timer starts
+         invalidate when you end the timer
 
+         */
+        
+        if sender.state == .Began {
+            
+            findIndex(sender.locationInView(view))
+            timer?.invalidate()
+            
+            timer = NSTimer.scheduledTimerWithTimeInterval(
+                0.05,
+                target: self,
+                selector: #selector(ShoeController.animateFrame),
+                userInfo: nil,
+                repeats: true)
+        }
+
+        
         if sender.state == .Changed {
             
-            //where photo should change according to x!
-            let newTranslation = sender.locationInView(view)
-            print(newTranslation)
+            //where photo changes according to x!
+            findIndex(sender.locationInView(view))
+
+            //EASING OUT
+            //
+            let finalImage: UIImage = shoeImages[imageIndex]
+            iv.frame = CGRect(x: 0, y: 0, width: finalImage.size.width, height: finalImage.size.height)
+//            var changedImage = imageIndex/3
+//            var newIndex: Int = 0
             
-            let translationPercent = newTranslation.x/UIScreen.mainScreen().bounds.width
-            let imageIndex = Int(translationPercent * CGFloat(ShoeController.ImageCount))
+//            while imageIndex > currentIndex {
+//                currentIndex += Int(ceil(Double(((imageIndex-currentIndex)/3))))
+//                print (currentIndex)
+//                let currentImage: UIImage = shoeImages[currentIndex]
+//                iv.image = currentImage
+//            }
             
-            let currentImage: UIImage = shoeImages[imageIndex]
-            
-            iv.image = currentImage
-            
-//            print(imageIndex)
-        }
-        else if sender.state == .Ended {
-            
+            iv.image = finalImage
         }
     }
     

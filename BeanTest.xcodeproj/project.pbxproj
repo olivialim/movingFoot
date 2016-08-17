@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		874554201D4BE96A000E668B /* Shoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8745541F1D4BE96A000E668B /* Shoe.swift */; };
 		87EEC6CE1D466A0F0092F260 /* Bean_iOS_OSX_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EEC6CD1D466A0F0092F260 /* Bean_iOS_OSX_SDK.framework */; };
 		87EEC6CF1D466A0F0092F260 /* Bean_iOS_OSX_SDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87EEC6CD1D466A0F0092F260 /* Bean_iOS_OSX_SDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC207FD87D971C58B4EC431E /* Pods_BeanTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9BA8C72E0BC017731F44BD /* Pods_BeanTest.framework */; };
@@ -35,7 +34,6 @@
 		6C9BA8C72E0BC017731F44BD /* Pods_BeanTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeanTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74DA72DEC00D45FBCB00502B /* Pods-BeanTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeanTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeanTest/Pods-BeanTest.release.xcconfig"; sourceTree = "<group>"; };
 		7AE738A803C844BD1B12F0A0 /* Pods-BeanTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeanTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeanTest/Pods-BeanTest.debug.xcconfig"; sourceTree = "<group>"; };
-		8745541F1D4BE96A000E668B /* Shoe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shoe.swift; sourceTree = "<group>"; };
 		87EEC6CD1D466A0F0092F260 /* Bean_iOS_OSX_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Bean_iOS_OSX_SDK.framework; path = "/Users/olivial/Library/Developer/Xcode/DerivedData/BeanTest-ghdjazifodkjotejlnbqotzamhko/Build/Products/Debug-iphonesimulator/Bean-iOS-OSX-SDK/Bean_iOS_OSX_SDK.framework"; sourceTree = "<absolute>"; };
 		F48B1E391D46628C00317BF0 /* BeanTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeanTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48B1E3C1D46628C00317BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,14 +65,6 @@
 				74DA72DEC00D45FBCB00502B /* Pods-BeanTest.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		8745541E1D4BE943000E668B /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				8745541F1D4BE96A000E668B /* Shoe.swift */,
-			);
-			name = Shared;
 			sourceTree = "<group>";
 		};
 		8767CE081D4BB014001F9C99 /* Resources */ = {
@@ -145,7 +135,6 @@
 			children = (
 				8767CE0C1D4BB57E001F9C99 /* App */,
 				8767CE091D4BB49B001F9C99 /* Start */,
-				8745541E1D4BE943000E668B /* Shared */,
 				8767CE081D4BB014001F9C99 /* Resources */,
 			);
 			path = BeanTest;
@@ -181,6 +170,7 @@
 		F48B1E311D46628C00317BF0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0730;
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "America's Drive-In Brand Properties LLC.";
@@ -274,7 +264,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874554201D4BE96A000E668B /* Shoe.swift in Sources */,
 				F48B1E3F1D46628C00317BF0 /* ShoeController.swift in Sources */,
 				F48B1E3D1D46628C00317BF0 /* AppDelegate.swift in Sources */,
 			);
